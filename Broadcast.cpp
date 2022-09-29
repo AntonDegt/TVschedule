@@ -1,22 +1,22 @@
 #include "Broadcast.h"
 #include <string>
 
-// -------------------- ТЕЛЕПЕРЕДАЧА --------------------
+// -------------------- Г’Г…Г‹Г…ГЏГ…ГђГ…Г„ГЂГ—ГЂ --------------------
 
 
-// Конструктор
+// ГЉГ®Г­Г±ГІГ°ГіГЄГІГ®Г°
 Broadcast::Broadcast(std::string name, Time time, Time lenght, bool textInput)
 	: name{ name }, start{ time }, lenght{ lenght }, textInput{ textInput }
 {}
 Broadcast::Broadcast(std::string name, Time time, Time lenght)
 	: Broadcast(name, time, lenght, false)
 {}
-// Пустой конструктор  - "", 00:00, 1:00
+// ГЏГіГ±ГІГ®Г© ГЄГ®Г­Г±ГІГ°ГіГЄГІГ®Г°  - "", 00:00, 1:00
 Broadcast::Broadcast()
 	: Broadcast("", Time(0, 0), Time(1, 0))
 {}
 
-// Чтение из консоли
+// Г—ГІГҐГ­ГЁГҐ ГЁГ§ ГЄГ®Г­Г±Г®Г«ГЁ
 
 void Broadcast::Read()
 {
@@ -30,7 +30,7 @@ void Broadcast::Read()
 }
 
 
-// Гетеры
+// ГѓГҐГІГҐГ°Г»
 
 std::string Broadcast::getName()
 {
@@ -49,7 +49,7 @@ bool Broadcast::getTextInput()
 	return textInput;
 }
 
-// Сетеры
+// Г‘ГҐГІГҐГ°Г»
 
 void Broadcast::setName(std::string name)
 {
@@ -68,7 +68,7 @@ void Broadcast::setTextInput(bool textInput)
 	this->textInput = textInput;
 }
 
-// Перегрузка операторов
+// ГЏГҐГ°ГҐГЈГ°ГіГ§ГЄГ  Г®ГЇГҐГ°Г ГІГ®Г°Г®Гў
 
 std::ostream& operator<< (std::ostream& out, Broadcast& broadcast)
 {
@@ -78,7 +78,8 @@ std::ostream& operator<< (std::ostream& out, Broadcast& broadcast)
 std::ofstream& operator<< (std::ofstream& out, Broadcast& broadcast)
 {
 	out << broadcast.name << std::endl;
-	out << broadcast.start << " " << broadcast.lenght;
+	out << broadcast.start << " ";
+	out << broadcast.lenght;
 	return out;
 }
 std::ifstream& operator>> (std::ifstream& in, Broadcast& broadcast)
