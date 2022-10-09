@@ -1,23 +1,22 @@
 #include "Broadcast.h"
 #include <string>
 
-// -------------------- ÒÅËÅÏÅÐÅÄÀ×À --------------------
+// -------------------- Телепередача --------------------
 
 
-// Êîíñòðóêòîð
+// Конструктор
 Broadcast::Broadcast(std::string name, Time time, Time lenght, bool textInput)
 	: name{ name }, start{ time }, lenght{ lenght }, textInput{ textInput }
 {}
 Broadcast::Broadcast(std::string name, Time time, Time lenght)
-	: Broadcast(name, time, lenght, false)
+	: Broadcast(name, time, lenght, false) // Дилегирование конструктора
 {}
-// Ïóñòîé êîíñòðóêòîð  - "", 00:00, 1:00
+// Контруктор по умолчанию  - "", 00:00, 1:00
 Broadcast::Broadcast()
 	: Broadcast("", Time(0, 0), Time(1, 0))
 {}
 
-// ×òåíèå èç êîíñîëè
-
+// Чтение из консоли
 void Broadcast::Read()
 {
 	if (textInput) std::cout << "Name: ";
@@ -30,7 +29,7 @@ void Broadcast::Read()
 }
 
 
-// Ãåòåðû
+// Гетеры
 
 std::string Broadcast::getName()
 {
@@ -49,7 +48,7 @@ bool Broadcast::getTextInput()
 	return textInput;
 }
 
-// Ñåòåðû
+// Сетеры
 
 void Broadcast::setName(std::string name)
 {
@@ -68,13 +67,15 @@ void Broadcast::setTextInput(bool textInput)
 	this->textInput = textInput;
 }
 
-// Ïåðåãðóçêà îïåðàòîðîâ
+// Операторы ввода/вывода
 
+// Оператор вывода в консоль
 std::ostream& operator<< (std::ostream& out, Broadcast& broadcast)
 {
 	out << broadcast.start << " -> " << broadcast.start + broadcast.lenght << " - " << broadcast.name;
 	return out;
 }
+// Оператор вывода в файл
 std::ofstream& operator<< (std::ofstream& out, Broadcast& broadcast)
 {
 	out << broadcast.name << std::endl;
@@ -82,6 +83,7 @@ std::ofstream& operator<< (std::ofstream& out, Broadcast& broadcast)
 	out << broadcast.lenght;
 	return out;
 }
+// Оператор ввода в файл
 std::ifstream& operator>> (std::ifstream& in, Broadcast& broadcast)
 {
 	in.get();
