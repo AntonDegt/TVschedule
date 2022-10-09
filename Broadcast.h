@@ -21,7 +21,7 @@ public:
 	// Полный контруктор
 	Broadcast(std::string name, Time time, Time lenght, bool textInput);
 	Broadcast(std::string name, Time time, Time lenght);
-	// Конструктор по умолчанию  - "", 00:00
+	// Конструктор по умолчанию  - "", 00:00, 01:00
 	Broadcast();
 
 	// Чтение телепередачи из консоли
