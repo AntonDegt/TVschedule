@@ -2,39 +2,41 @@
 #include <iostream>
 #include <fstream>
 
-// -------------------- ВРЕМЯ -------------------
+// -------------------- Р’СЂРµРјСЏ -------------------
 
-// Время - часы : минуты
+// Р’СЂРµРјСЏ
 class Time
 {
 private:
 	int hour;
 	int minute;
 
-	// Проверка на коректность времени (иначе вызов ошибки)
+	// РџСЂРѕРІРµСЂРєР° РІСЂРµРјРµРЅРё РЅР° РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ (РёРЅР°С‡Рµ РІС‹Р·С‹РІР°РµС‚ РѕС€РёР±РєСѓ)
 	void ErrorCheck();
 public:
-	// Конструктор
+	// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	Time(int hour, int minute);
-	// Пустой конструктор - 00:00
+	// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ - 00:00
 	Time();
 
-	// Гетеры
+	// Р“РµС‚РµСЂС‹
 
 	int getHour();
 	int getMinute();
 
-	// Сетеры
+	// РЎРµС‚РµСЂС‹
 
 	void setHour(int hour);
 	void setMinute(int minute);
 
-	// Перегрузка операторов
+	// РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂРѕРІ РІРІРѕРґР°/РІС‹РІРѕРґР°
 
 	friend std::ostream& operator<< (std::ostream& out, Time time);
 	friend std::istream& operator>> (std::istream& in, Time& time);
 	friend std::ofstream& operator<< (std::ofstream& out, Time time);
 	friend std::ifstream& operator>> (std::ifstream& in, Time& time);
+
+	// РїРµСЂРµРіСЂСѓР·РєР° Р±РёРЅР°СЂРЅС‹С… РѕРїРµСЂР°С‚РѕСЂРѕРІ
 
 	bool operator< (Time sec);
 	bool operator> (Time sec);
