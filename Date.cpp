@@ -1,45 +1,45 @@
 #include "Date.h"
 
-// -------------------- ���� --------------------
+// -------------------- Дата --------------------
 
 
-// �������� �� ����������� ���� (���� ����� ������)
+// Проверка корректности даты
 void Date::ErrorCheck()
 {
 	if (month <= 0 || month > 12)
-		throw "Month out of range.";
+		throw "Month out of range."; // Исключение - Месяц вне деапазона
 	if (day > 0)
-		if (month == 2)
+		if (month == 2) // проверка Февраля
 		{
 			if (year % 4 == 0)
 			{
-				if (day <= 29)
+				if (day <= 29) 
 					return;
 			}
-			else if (day < 29)
+			else if (day < 29) 
 				return;
 		}
 		else if (month % 2 == 0)
 		{
-			if (day <= 31)
+			if (day <= 31) 
 				return;
 		}
-		else if (day < 31)
+		else if (day < 31) 
 			return;
 
 	throw "Day out of range.";
 }
 
-// �����������
+// Конструктор
 Date::Date(int day, int month, int year)
 	: day{ day }, month{ month }, year{ year }
 {}
-// ������ ����������� - 01.01.2000
+// Конструктор по умолчанию - 01.01.2000
 Date::Date()
 	: Date(01, 01, 2000)
 {}
 
-// ������
+// Гетер
 
 int Date::getDay()
 {
@@ -54,7 +54,7 @@ int Date::getYear()
 	return year;
 }
 
-// ������
+// Сетер
 
 void Date::setDay(int day)
 {
@@ -72,13 +72,15 @@ void Date::setYear(int year)
 	ErrorCheck();
 }
 
-// ���������� ����������
+// Оператор ввода/вывода
 
+// Оператор вывода в консоль
 std::ostream& operator<< (std::ostream& out, Date& date)
 {
 	out << date.day << "/" << date.month << "/" << date.year;
 	return out;
 }
+// Оператор ввода из консоли
 std::istream& operator>> (std::istream& in, Date& date)
 {
 	in >> date.day;
@@ -86,11 +88,13 @@ std::istream& operator>> (std::istream& in, Date& date)
 	in >> date.year;
 	return in;
 }
+// Опертор вывода в файл
 std::ofstream& operator<< (std::ofstream& out, Date& date)
 {
 	out << date.day << " " << date.month << " " << date.year;
 	return out;
 }
+// Оператор ввода в файл
 std::ifstream& operator>> (std::ifstream& in, Date& date)
 {
 	in >> date.day >> date.month >> date.year;
