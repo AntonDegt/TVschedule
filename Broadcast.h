@@ -4,44 +4,44 @@
 
 #include "Time.h"
 
-// -------------------- ТЕЛЕПЕРЕДАЧА --------------------
+// -------------------- РўРµР»РµРїРµСЂРµРґР°С‡Р° --------------------
 
-// Телепередача
+// РўРµР»РµРїРµСЂРµРґР°С‡Р°
 class Broadcast
 {
 private:
-	std::string name;
-	Time start;
-	Time lenght;
-
+	std::string name; // РќР°Р·РІР°РЅРёРµ
+	Time start; // Р’СЂРµРјСЏ РЅР°С‡Р°Р»Р°
+	Time lenght; // Р”Р»РёС‚РµР»СЊРЅРѕСЃС‚СЊ
+	
+	// Р”РѕРї. С‚РµРєСЃС‚ РїСЂРё РІС‹РІРѕРґРµ РїСЂРѕРіСЂР°РјРјС‹
 	bool textInput;
 
 public:
-	// Конструктор
+	// РџРѕР»РЅС‹Р№ РєРѕРЅС‚СЂСѓРєС‚РѕСЂ
 	Broadcast(std::string name, Time time, Time lenght, bool textInput);
 	Broadcast(std::string name, Time time, Time lenght);
-	// Пустой конструктор  - "", 00:00
+	// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ  - "", 00:00
 	Broadcast();
 
-	// Чтение из консоли
-
+	// Р§С‚РµРЅРёРµ С‚РµР»РµРїРµСЂРµРґР°С‡Рё РёР· РєРѕРЅСЃРѕР»Рё
 	void Read();
 
-	// Гетеры
+	// Р“РµС‚РµСЂС‹
 
 	std::string getName();
 	Time getStart();
 	Time getLenght();
 	bool getTextInput();
 
-	// Сетеры
+	// РЎРµС‚РµСЂС‹
 
 	void setName(std::string name);
 	void setStart(Time start);
 	void setLenght(Time lenght);
 	void setTextInput(bool textInput);
 
-	// Перегрузка операторов
+	// РћРїРµСЂР°С‚РѕСЂС‹ РІРІРѕРґР°/РІС‹РІРѕРґР°
 
 	friend std::ostream& operator<< (std::ostream& out, Broadcast& broadcast);
 	friend std::ofstream& operator<< (std::ofstream& out, Broadcast& broadcast);
