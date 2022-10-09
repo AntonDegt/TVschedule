@@ -2,9 +2,9 @@
 #include <iostream>
 #include <fstream>
 
-// -------------------- ДАТА --------------------
+// -------------------- Р”Р°С‚Р° --------------------
 
-// Дата - день месяц год
+// Р”Р°С‚Р° - Р”РµРЅСЊ РњРµСЃСЏС† Р“РѕРґ
 class Date
 {
 private:
@@ -12,28 +12,28 @@ private:
 	int month;
 	int day;
 
-	// Проверка на коректность даты (либо вызов ошибки)
+	// РџСЂРѕРІРµСЂРєР° Р”Р°С‚С‹ РЅР° РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ (РёРЅР°С‡Рµ РСЃРєР»СЋС‡РµРЅРёРµ)
 	void ErrorCheck();
 public:
-	// Конструктор
+	// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	Date(int day, int month, int year);
-	// Пустой конструктор - 01.01.2000
+	// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ - 01.01.2000
 	Date();
 
 
-	// Гетеры
+	// Р“РµС‚РµСЂС‹
 
 	int getDay();
 	int getMonth();
 	int getYear();
 
-	// Сетеры
+	// РЎРµС‚РµСЂС‹
 
 	void setDay(int day);
 	void setMonth(int month);
 	void setYear(int year);
 
-	// Перегрузка операторов
+	// РћРїРµСЂР°С‚РѕСЂС‹
 
 	friend std::ostream& operator<< (std::ostream& out, Date& date);
 	friend std::istream& operator>> (std::istream& in, Date& date);
