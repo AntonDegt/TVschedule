@@ -1,14 +1,18 @@
 #include "TVFileWork.h"
 
-
+// Чтение из файла
 void TVFileWork::WriteToFile(TVschedule schedule, std::string path)
 {
-	std::ofstream file;
-	file.open(path);
-
-	file << schedule;
+	std::ofstream file; 
+	file.open(path); // Открытие файла
 	
-	file.close();
+	if (file.is_open()) // Проверка файла
+	{
+		file >> schedule; // Запись в файл
+	
+		file.close(); // Закрытие файла
+	}
+	else throw "File can't be open.";
 }
 
 TVschedule TVFileWork::ReadFromFile(std::string path)
@@ -16,14 +20,15 @@ TVschedule TVFileWork::ReadFromFile(std::string path)
 	TVschedule schedule;
 
 	std::ifstream file;
-	file.open(path);
+	file.open(path); // Открываем файл
 
-	if (file.is_open())
+	if (file.is_open()) // Проверка файла
 	{
-		file >> schedule;
+		file >> schedule; // Чтение из файла
 
-		file.close();
+		file.close(); // Закрытие файла
+		
+		return schedule;
 	}
-
-	return schedule;
+	else throw "File can't be open.";
 }
