@@ -12,15 +12,15 @@ class Broadcast
 private:
 	std::string name; // Название
 	Time start; // Время начала
-	Time lenght; // Длительность
+	Time end; // Длительность
 	
 	// Доп. текст при выводе программы
 	bool textInput;
 
 public:
 	// Полный контруктор
-	Broadcast(std::string name, Time time, Time lenght, bool textInput);
-	Broadcast(std::string name, Time time, Time lenght);
+	Broadcast(std::string name, Time time, Time end, bool textInput);
+	Broadcast(std::string name, Time time, Time end);
 	// Конструктор по умолчанию  - "", 00:00, 01:00
 	Broadcast();
 
@@ -31,14 +31,14 @@ public:
 
 	std::string getName();
 	Time getStart();
-	Time getLenght();
+	Time getEnd();
 	bool getTextInput();
 
 	// Сетеры
 
 	void setName(std::string name);
 	void setStart(Time start);
-	void setLenght(Time lenght);
+	void setEnd(Time end);
 	void setTextInput(bool textInput);
 
 	// Операторы ввода/вывода

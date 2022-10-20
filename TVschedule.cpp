@@ -145,3 +145,9 @@ TVschedule& TVschedule::operator= (TVschedule copy)
 
 	return *this;
 }
+
+// Оператор индексации
+Broadcast& TVschedule::operator[](const int index)
+{
+	return schedule[index];
+}

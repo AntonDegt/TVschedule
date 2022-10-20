@@ -8,7 +8,7 @@ void TVFileWork::WriteToFile(TVschedule schedule, std::string path)
 	
 	if (file.is_open()) // Проверка файла
 	{
-		file >> schedule; // Запись в файл
+		file << schedule; // Запись в файл
 	
 		file.close(); // Закрытие файла
 	}

@@ -5,11 +5,11 @@
 
 
 // Конструктор
-Broadcast::Broadcast(std::string name, Time time, Time lenght, bool textInput)
-	: name{ name }, start{ time }, lenght{ lenght }, textInput{ textInput }
+Broadcast::Broadcast(std::string name, Time time, Time end, bool textInput)
+	: name{ name }, start{ time }, end{ end }, textInput{ textInput }
 {}
-Broadcast::Broadcast(std::string name, Time time, Time lenght)
-	: Broadcast(name, time, lenght, false) // Дилегирование конструктора
+Broadcast::Broadcast(std::string name, Time time, Time end)
+	: Broadcast(name, time, end, false) // Дилегирование конструктора
 {}
 // Контруктор по умолчанию  - "", 00:00, 1:00
 Broadcast::Broadcast()
@@ -24,8 +24,8 @@ void Broadcast::Read()
 	std::getline(std::cin, this->name);
 	if (textInput) std::cout << "StartTime(HH MM): ";
 	std::cin >> this->start;
-	if (textInput) std::cout << "LenghtTime(HH MM): ";
-	std::cin >> this->lenght;
+	if (textInput) std::cout << "EndTime(HH MM): ";
+	std::cin >> this->end;
 }
 
 
@@ -39,9 +39,9 @@ Time Broadcast::getStart()
 {
 	return start;
 }
-Time Broadcast::getLenght()
+Time Broadcast::getEnd()
 {
-	return lenght;
+	return end;
 }
 bool Broadcast::getTextInput()
 {
@@ -58,9 +58,9 @@ void Broadcast::setStart(Time start)
 {
 	this->start = start;
 }
-void Broadcast::setLenght(Time lenght)
+void Broadcast::setEnd(Time end)
 {
-	this->lenght = lenght;
+	this->end = end;
 }
 void Broadcast::setTextInput(bool textInput)
 {
@@ -72,7 +72,7 @@ void Broadcast::setTextInput(bool textInput)
 // Оператор вывода в консоль
 std::ostream& operator<< (std::ostream& out, Broadcast& broadcast)
 {
-	out << broadcast.start << " -> " << broadcast.start + broadcast.lenght << " - " << broadcast.name;
+	out << broadcast.start << " -> " << broadcast.end << " - " << broadcast.name;
 	return out;
 }
 // Оператор вывода в файл
@@ -80,7 +80,7 @@ std::ofstream& operator<< (std::ofstream& out, Broadcast& broadcast)
 {
 	out << broadcast.name << std::endl;
 	out << broadcast.start << " ";
-	out << broadcast.lenght;
+	out << broadcast.end;
 	return out;
 }
 // Оператор ввода в файл
@@ -89,6 +89,6 @@ std::ifstream& operator>> (std::ifstream& in, Broadcast& broadcast)
 	in.get();
 	std::getline(in, broadcast.name);
 	in >> broadcast.start;
-	in >> broadcast.lenght;
+	in >> broadcast.end;
 	return in;
 }

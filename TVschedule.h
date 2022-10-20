@@ -54,4 +54,8 @@ public:
 	// Оператор присваивания
 	
 	TVschedule& operator= (TVschedule copy);
+
+	// Индексатор
+
+	Broadcast& operator[] (const int index);
 };

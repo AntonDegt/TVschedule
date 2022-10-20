@@ -52,7 +52,9 @@ void Time::setMinute(int minute)
 // Вывод в консоль
 std::ostream& operator<< (std::ostream& out, Time time) 
 {
-	out << time.hour << ":" << time.minute;
+	out << time.hour << ":";
+	if (time.minute < 10) out << "0";
+	out << time.minute;
 	return out;
 }
 // Ввод из консоли
